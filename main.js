@@ -1,28 +1,28 @@
-/*
-    Cargar comidas en memoria desde el JSON
-*/
-fetch('./data/comidas.json')          // Ruta al archivo JSON
-  .then(response => response.json())  // Convertir la respuesta en JSON
-  .then(data => {                     // Aquí tienes acceso al JSON en formato de objeto JS
-    console.log('Comidas cargadas desde JSON:');
-    console.log(data);    
-    comidas = data;                   // Asignar el JSON a la variable comidas
+let comidas = [];
+const comidaContainer = document.getElementById("comidaContainer");
 
-    // --- SOLO AGREGAS ESTO DENTRO DEL THEN ---
-    const comidaContainer = document.getElementById("comidaContainer");
 
-    for (let i = 0; i < comidas.length; i++) {
-      comidaContainer.innerHTML += `
-        <article class="card">
-          <h2>${comidas[i].nombre}</h2>
-          <p>${comidas[i].provincia}</p>
-          <span>${comidas[i].categoria}</span>
-        </article>
-      `;
-    }
+function mostrarComidasConForEach(lista) {
+
+  comidaContainer.innerHTML = lista.map(comida => `
+    <article class="card">
+      <h2>${comida.nombre}</h2>
+      <p>${comida.provincia}</p>
+      <span>${comida.categoria}</span>
+    </article>
+  `).join('');
+}
+
+
+fetch('./data/comidas.json')
+  .then(response => response.json())
+  .then(data => {                     
+    console.log('Comidas cargadas desde JSON:', data);    
+    comidas = data;                   
+    
+ 
+    mostrarComidasConForEach(comidas);        
   })
-  .catch(error => {                   // Manejo de errores al leer el archivo JSON
+  .catch(error => {                   
     console.error('Error al leer el archivo JSON:', error);
   });
-
-let comidas = [];
