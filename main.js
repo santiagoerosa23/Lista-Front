@@ -1,28 +1,23 @@
-let comidas = [];
-const comidaContainer = document.getElementById("comidaContainer");
+// 1. Buscamos el contenedor de tu HTML donde se van a dibujar las comidas
+const contenedor = document.getElementById('comidaContainer');
 
-
-function mostrarComidasConForEach(lista) {
-
-  comidaContainer.innerHTML = lista.map(comida => `
-    <article class="card">
-      <h2>${comida.nombre}</h2>
-      <p>${comida.provincia}</p>
-      <span>${comida.categoria}</span>
-    </article>
-  `).join('');
-}
-
-
+// 2. Traemos los datos de tu archivo JSON
 fetch('./data/comidas.json')
   .then(response => response.json())
-  .then(data => {                     
-    console.log('Comidas cargadas desde JSON:', data);    
-    comidas = data;                   
+  .then(comidas => {
     
- 
-    mostrarComidasConForEach(comidas);        
-  })
-  .catch(error => {                   
-    console.error('Error al leer el archivo JSON:', error);
+    // 3. Recorremos la lista de comidas una por una
+    comidas.forEach(comida => {
+      
+      // Creamos una etiqueta <div> vacía en la memoria de la computadora
+      const tarjeta = document.createElement('div');
+      
+      // Extraemos los textos de la comida y los unimos con un guion
+      tarjeta.textContent = Object.values(comida).join(' - '); 
+      
+      // Metemos ese <div> adentro de tu <main id="comidaContainer"> para que se vea en pantalla
+      contenedor.appendChild(tarjeta); 
+      
+    });
+
   });

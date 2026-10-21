@@ -1,40 +1,43 @@
-/* Contenedor principal de todas las tarjetas */
-#comidaContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-  padding: 20px;
-  font-family: sans-serif;
-}
-
-/* Estilo para cada tarjeta */
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-}
-
-.card h2 {
-  margin: 0 0 8px 0;
-  font-size: 1.2rem;
+/* --- Estilos Generales --- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f6;
   color: #333;
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.card p {
-  margin: 0 0 12px 0;
-  color: #666;
-  font-size: 0.9rem;
+h1 {
+  color: #2c3e50;
+  margin-bottom: 30px;
 }
 
-.card span {
-  display: inline-block;
-  background-color: #e0f2fe;
-  color: #0369a1;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: bold;
+/* --- Contenedor de las Comidas --- */
+.comida-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  padding: 0;
+}
+
+/* --- Tarjetas de Comida (los divs creados por JS) --- */
+.comida-container div {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #e67e22; /* Una línea de color naranja al costado */
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+/* Pequeño efecto visual al pasar el mouse por encima */
+.comida-container div:hover {
+  transform: translateY(-5px);
 }
