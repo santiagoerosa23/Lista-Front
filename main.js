@@ -1,6 +1,12 @@
 // 1. Buscamos el contenedor de tu HTML donde se van a dibujar las comidas
 const contenedor = document.getElementById('comidaContainer');
+const input = document.getElementById('nuevaComidaInput');
+const boton = document.getElementById('agregarComidaBtn');
 
+boton.addEventListener('click', 'agregarComida')
+function agregarComida() {
+  const comida = input.value;
+}
 // 2. Traemos los datos de tu archivo JSON
 fetch('./data/comidas.json')
   .then(response => response.json())
@@ -9,6 +15,9 @@ fetch('./data/comidas.json')
     // 3. Recorremos la lista de comidas una por una
     comidas.forEach(comida => {
       
+    });
+
+  });
       // Creamos una etiqueta <div> vacía en la memoria de la computadora
       const tarjeta = document.createElement('div');
       
@@ -17,7 +26,3 @@ fetch('./data/comidas.json')
       
       // Metemos ese <div> adentro de tu <main id="comidaContainer"> para que se vea en pantalla
       contenedor.appendChild(tarjeta); 
-      
-    });
-
-  });
